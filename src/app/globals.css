@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* ─── Design tokens — Na Grade ─────────────────────────────────────── */
+@theme {
+  --color-bg:          #0F0E13;
+  --color-surface:     #17151F;
+  --color-surface-2:   #1F1C2A;
+  --color-roxo:        #8B5CF6;
+  --color-roxo-hover:  #7C4DF0;
+  --color-roxo-luz:    #A78BFA;
+  --color-papel:       #F1EDE5;
+  --color-muted:       #3A3547;
+}
+
+/* Fontes via CSS vars injetadas pelo next/font/google */
+@theme inline {
+  --font-display: var(--font-anton);
+  --font-title:   var(--font-bebas);
+  --font-body:    var(--font-dmsans);
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────── */
+body {
+  background-color: #0F0E13;
+  color: #F1EDE5;
+  -webkit-font-smoothing: antialiased;
+  /* Evita "puxar pra atualizar" e bounce no mobile, dando sensação de app */
+  overscroll-behavior-y: none;
+}
+
+/* Alvos de toque confortáveis e sem highlight azul no mobile */
+button, a, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ─── Safe areas (notch / barra inferior do iOS) ────────────────────── */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+
+/* ─── Hero glow — gradiente roxo sutil no topo ──────────────────────── */
+.hero-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 100% 50% at 50% -5%, rgba(139,92,246,0.13) 0%, transparent 62%);
+  pointer-events: none;
+}
+
+/* ─── Picote do ingresso ─────────────────────────────────────────────── */
+.ticket-perforation {
+  border-left: 2px dashed rgba(15, 14, 19, 0.28);
+}
+
+.ticket-perforation-light {
+  border-left: 2px dashed rgba(255, 255, 255, 0.15);
+}

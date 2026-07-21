@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirme seu e-mail — Na Grade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body style="margin:0;padding:0;background-color:#0F0E13;font-family:'DM Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;">
+
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#0F0E13;padding:48px 16px;">
+    <tr>
+      <td align="center">
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;">
+
+          <!-- Logo ingresso -->
+          <tr>
+            <td align="center" style="padding-bottom:40px;">
+              <table cellpadding="0" cellspacing="0" style="border-radius:7px;overflow:hidden;display:inline-table;box-shadow:0 8px 32px rgba(0,0,0,0.6);">
+                <tr>
+                  <!-- Canhoto -->
+                  <td style="background-color:#8B5CF6;padding:0 14px;vertical-align:middle;">
+                    <div style="writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Bebas Neue',Arial,sans-serif;color:#F1EDE5;font-size:13px;letter-spacing:0.12em;line-height:1;">
+                      NA GRADE
+                    </div>
+                  </td>
+                  <!-- Picote + corpo -->
+                  <td style="background-color:#F1EDE5;border-left:2px dashed rgba(15,14,19,0.28);padding:16px 28px;vertical-align:middle;">
+                    <span style="font-family:'Anton',Arial,sans-serif;color:#100F0D;font-size:38px;line-height:1;letter-spacing:0.01em;">
+                      NA&nbsp;GRADE
+                    </span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Card principal -->
+          <tr>
+            <td style="background-color:#17151F;border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;">
+
+              <!-- Header do card -->
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="padding:32px 36px 28px;border-bottom:1px solid rgba(255,255,255,0.07);">
+                    <p style="margin:0 0 8px;font-family:'Bebas Neue',Arial,sans-serif;color:#A78BFA;font-size:12px;letter-spacing:0.16em;">
+                      QUASE LÁ
+                    </p>
+                    <h1 style="margin:0;font-family:'Anton',Arial,sans-serif;color:#F1EDE5;font-size:42px;line-height:0.92;font-weight:400;">
+                      CONFIRME<br />SEU E-MAIL
+                    </h1>
+                  </td>
+                </tr>
+
+                <!-- Corpo -->
+                <tr>
+                  <td style="padding:32px 36px;">
+                    <p style="margin:0 0 24px;color:rgba(241,237,229,0.60);font-size:15px;line-height:1.6;">
+                      Você criou uma conta no Na Grade. Clique no botão abaixo para confirmar seu e-mail e começar a registrar seus shows.
+                    </p>
+
+                    <!-- Botão CTA -->
+                    <table cellpadding="0" cellspacing="0" style="width:100%;">
+                      <tr>
+                        <td align="center">
+                          <a href="{{ .ConfirmationURL }}"
+                             style="display:inline-block;background-color:#8B5CF6;color:#F1EDE5;font-family:'DM Sans',Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:0.06em;text-decoration:none;padding:15px 40px;border-radius:10px;">
+                            CONFIRMAR E-MAIL
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Linha separadora -->
+                    <table width="100%" cellpadding="0" cellspacing="0" style="margin:32px 0;">
+                      <tr>
+                        <td style="border-top:1px solid rgba(255,255,255,0.07);height:1px;"></td>
+                      </tr>
+                    </table>
+
+                    <!-- Link alternativo -->
+                    <p style="margin:0 0 8px;color:rgba(241,237,229,0.35);font-size:12px;">
+                      Se o botão não funcionar, copie e cole este link no navegador:
+                    </p>
+                    <p style="margin:0;word-break:break-all;">
+                      <a href="{{ .ConfirmationURL }}" style="color:#A78BFA;font-size:12px;font-family:'DM Sans',monospace;">
+                        {{ .ConfirmationURL }}
+                      </a>
+                    </p>
+                  </td>
+                </tr>
+
+                <!-- Aviso de segurança -->
+                <tr>
+                  <td style="background-color:#1F1C2A;border-top:1px solid rgba(255,255,255,0.07);padding:20px 36px;">
+                    <p style="margin:0;color:rgba(241,237,229,0.30);font-size:12px;line-height:1.5;">
+                      Se você não criou uma conta no Na Grade, ignore este e-mail. Este link expira em 24 horas.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td align="center" style="padding-top:32px;">
+              <p style="margin:0;color:rgba(241,237,229,0.20);font-size:12px;">
+                Na Grade · Seu diário de shows
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
