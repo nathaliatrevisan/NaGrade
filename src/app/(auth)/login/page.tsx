@@ -1,12 +1,22 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Logo } from '@/components/Logo'
 import { SocialAuth, SOCIAL_AUTH_ENABLED } from '@/components/SocialAuth'
 
+// useSearchParams precisa estar dentro de um <Suspense> para o build
+// estático do Next não quebrar. O conteúdo vai no LoginForm.
 export default function LoginPage() {
+  return (
+    <Suspense fallback={<main className="min-h-screen bg-bg" />}>
+      <LoginForm />
+    </Suspense>
+  )
+}
+
+function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const redirect = searchParams.get('redirect') || '/dashboard'
