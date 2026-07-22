@@ -14,11 +14,11 @@ create extension if not exists "pgcrypto";
 -- =============================================================================
 create table if not exists public.events (
   id          uuid primary key default gen_random_uuid(),
-  artist      text not null,
-  venue       text not null,
-  city        text not null,
+  artist      text not null check (char_length(artist) between 1 and 200),
+  venue       text not null check (char_length(venue) between 1 and 200),
+  city        text not null check (char_length(city) between 1 and 100),
   state       text,
-  country     text not null default 'BR',
+  country     text not null default 'BR' check (char_length(country) = 2),
   event_date  date not null,
   festival    boolean not null default false,
   setlistfm_id text unique,  -- ID do setlist.fm para evitar duplicatas da fonte externa
@@ -37,7 +37,7 @@ create index if not exists events_date_idx   on public.events (event_date);
 -- =============================================================================
 create table if not exists public.genres (
   id         uuid primary key default gen_random_uuid(),
-  name       text not null,
+  name       text not null check (char_length(name) between 1 and 60),
   created_at timestamptz not null default now()
 );
 
@@ -52,7 +52,7 @@ create index if not exists genres_name_search_idx on public.genres (lower(name) 
 -- =============================================================================
 create table if not exists public.festivals (
   id          uuid primary key default gen_random_uuid(),
-  name        text not null,
+  name        text not null check (char_length(name) between 1 and 120),
   city        text,
   country     text not null default 'BR',
   start_date  date,
