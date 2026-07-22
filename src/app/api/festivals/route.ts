@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { ZodError } from 'zod'
 import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { festivalSchema } from '@/lib/validations/events'
+import { escapeLike } from '@/lib/genres'
 
 /** Shape achatado devolvido ao front (nome vem do catálogo compartilhado) */
 interface UserFestivalRow {
@@ -104,7 +105,7 @@ export async function POST(request: Request) {
       const { data: existing } = await supabase
         .from('festivals')
         .select('id')
-        .ilike('name', parsed.name)
+        .ilike('name', escapeLike(parsed.name))
         .maybeSingle()
 
       if (existing) {
@@ -127,7 +128,7 @@ export async function POST(request: Request) {
             const { data: raced } = await supabase
               .from('festivals')
               .select('id')
-              .ilike('name', parsed.name)
+              .ilike('name', escapeLike(parsed.name))
               .maybeSingle()
             if (!raced) throw createError
             festivalId = raced.id

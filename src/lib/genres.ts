@@ -8,6 +8,14 @@ import type { Database } from './supabase/types'
 type Client = SupabaseClient<Database>
 
 /**
+ * Escapa os curingas do LIKE/ILIKE (% e _) num valor digitado pelo usuário.
+ * Sem isso, um nome como "Rock%" casaria com registros errados no find-or-create.
+ */
+export function escapeLike(value: string): string {
+  return value.replace(/[\\%_]/g, (m) => `\\${m}`)
+}
+
+/**
  * Resolve o gênero pelo catálogo compartilhado (find-or-create).
  * Recebe o texto digitado e devolve o nome CANÔNICO já existente, ou cria um
  * novo. Isso garante que "Pop Punk" e "pop punk" convirjam para um só valor.
@@ -25,7 +33,7 @@ export async function resolveGenre(
   const { data: existing } = await supabase
     .from('genres')
     .select('name')
-    .ilike('name', name)
+    .ilike('name', escapeLike(name))
     .maybeSingle()
 
   if (existing) return existing.name
@@ -43,7 +51,7 @@ export async function resolveGenre(
       const { data: raced } = await supabase
         .from('genres')
         .select('name')
-        .ilike('name', name)
+        .ilike('name', escapeLike(name))
         .maybeSingle()
       return raced?.name ?? name
     }
